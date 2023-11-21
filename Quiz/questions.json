@@ -1,0 +1,26 @@
+[
+    {
+        "question": "Qual o nome do nosso planeta?",
+        "choice1": "Terra",
+        "choice2": "Água",
+        "choice3": "Júpiter",
+        "choice4": "Andrômeda",
+        "answer": 1
+    },
+    {
+        "question": "Inside which HTML element we put the JavaScript?",
+        "choice1": "<script>",
+        "choice2": "<javascript>",
+        "choice3": "<js>",
+        "choice4": "<scripting>",
+        "answer": 1
+    },
+    {
+        "question": "Qual o nome das três principais linguagens para desenvolver um site?",
+        "choice1": "<script>",
+        "choice2": "<javascript>",
+        "choice3": "<js>",
+        "choice4": "HTML, CSS, JavaScript",
+        "answer": 4
+    }
+]
