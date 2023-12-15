@@ -3,6 +3,8 @@ const choices = Array.from(document.getElementsByClassName('choice-text')); // a
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
+const loader = document.getElementById('loader');   // loading
+const game = document.getElementById('game')
 
 let currentQuestion = {};      
 let acceptingAnswers = false;
@@ -31,6 +33,7 @@ fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple").the
 
         return formattedQuestion;
     })
+    
     startGame();
 })
 .catch(error => {
@@ -47,6 +50,8 @@ startGame = () => {
     score = 0;
     availableQuestions = [...questions];        // apenas as perguntas que ainda não foram chamadas
     getNewQuestion();           // aqui apenas pegará a primeira pergunta do quiz
+    game.classList.remove('hidden');        // barra de loading
+    loader.classList.add('hidden');
 };
 ///////////////////////////////////////
 getNewQuestion = () => {
