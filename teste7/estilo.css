@@ -28,11 +28,30 @@ body {
 h1 {
     text-align: center;
 }
-
-h2 {
-    padding: 10px;
-}
-
 form input:focus {
     outline: 1px solid var(--cor1);
+}
+.calculadora {
+    width: 98%;
+}
+.btn {
+    width: 100%;
+    margin: 1px 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+    border: none;
+}
+.btn:hover{
+    background-color: rgb(187, 184, 184);
+}
+.display {
+    height: 65px;
+    width: 100%;
+    margin-left: 5px;
+    text-align: right;
+    border: none;
+    border-radius: 10px;
+}
+.btn-eq:hover {
+    background-color: rgb(55, 167, 79);
 }

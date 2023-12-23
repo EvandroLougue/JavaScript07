@@ -15,7 +15,7 @@ Se o dígito for maior que 9, então considera 0
 11 - (284 % 11) = 2 (primeiro dígito)
 Se o dígito for maior que 9, então considera 0
 */
-
+/*
 class ValidaCPF {
     constructor(cpfEnviado) {
         Object.defineProperty(this, 'cpfLimpo', {       // cpfLimpo é uma variável criada para guardar o valor do new ValidaCPF
@@ -63,4 +63,56 @@ if (validacpf.valida()) {
     console.log('CPF Válido');
 } else {
     console.log('CPF Inválido');
+}
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class ValidaCPF {
+    constructor(cpfRecebido) {
+        Object.defineProperty(this, 'cpfLimpo', {
+            writable: false,
+            enumerable: true,
+            configurable: true,
+            value: cpfRecebido.replace(/\D+/g, '')
+        })
+    }
+
+    valida() {
+        if (this.cpfLimpo === 'undefined') return false;
+        if (this.cpfLimpo.length !== 11) return false;
+        if (this.isSequency()) return false;
+        const cpfParcial = this.cpfLimpo.slice(0, -2);
+        const digito1 = this.criaDigito(cpfParcial);
+        const digito2 = this.criaDigito(cpfParcial + digito1);
+        const novoCPF = cpfParcial + digito1 + digito2;
+
+        return novoCPF === this.cpfLimpo;
+    }
+
+    criaDigito(cpfParcial) {
+        const cpfArray = Array.from(cpfParcial);
+        let contador = cpfArray.length + 1;
+        let total = cpfArray.reduce((ac, val) => {
+            ac += contador * val;
+            contador--;
+            return ac;
+        }, 0)
+        const digito = 11 - (total % 11);
+        return digito > 9 ? '0' : String(digito);
+    }
+
+    isSequency() {
+        const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length);
+        return sequencia === this.cpfLimpo;
+    }
+
+}
+
+const cpf = new ValidaCPF('024.675.170-39');
+
+if (cpf.valida()) {
+    console.log('CPF VÁLIDO');
+} else {
+   console.log('CPF Inválido');
 }

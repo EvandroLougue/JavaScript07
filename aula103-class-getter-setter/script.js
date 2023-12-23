@@ -57,3 +57,5 @@ class Pessoa {
 const p1 = new Pessoa('Evandro', 'Lougue');
 p1.nomeCompleto = 'Evandro Lougue dos Santos';
 console.log(p1.nomeCompleto);
+console.log(p1.nome);
+console.log(p1.sobrenome)
